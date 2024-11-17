@@ -1,0 +1,197 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1 {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
+h2{
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500; 
+}
+a{
+    font-family: "Poppins", serif;
+    font-weight: 100;
+    font-style: normal;
+}
+p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    text-align: justify;
+}
+.myslides{
+    display: none;
+}
+.myslides img{
+    vertical-align: middle;
+    height: 400px;
+}
+main{
+    max-width: 90%;
+    position: relative;
+    margin: auto;
+    height: 400px;
+    margin-top: 50px;
+}
+.prev, .next{
+    cursor: pointer;
+    position: absolute;
+    top: 30%;
+    width: auto;
+    padding: 16px;
+    margin-top: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 1s;
+    border-radius: 0 5px 5px 0;
+    user-select: none;
+}
+.next{
+    right: 0;
+    border-radius: 5px 0 0 5px;
+}
+.prev:hover, .next:hover{
+    background-color: rgba(0,0,0,0.8);
+}
+.numbertext{
+    color: black;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+.fade{
+    -webkit-animation-name:fade ;
+    -webkit-animation-duration: 1s;
+    animation-name: fade;
+    animation-duration: 1s;
+}
+@-webkit-keyframes fade{
+    from{opacity: .6;}
+    to {opacity: 1;}
+}
+@keyframes fade{
+    from{opacity: .4;}
+    to {opacity: 1;}
+}
+.about{
+    margin: 70px;
+    display: flex;
+}
+.about-photo img{
+    height: 500px;
+    width: 500px;
+}
+.info{
+    margin-left: 70px;
+}
+.info p{
+    margin-top: 50px;
+    font-size: 20px;
+    color: #404040;
+}
+.content{
+    background-color: #8c8c8c30;
+}
+.category, .awards, .spons-gallery{
+    margin: 50px 70px;
+}
+.images{
+    display: flex;
+    margin-top: 20px;
+}
+.category-content{
+    margin-right: 59.5px;
+}
+.category-content img{
+    height: 24rem;
+    width: 16rem;
+    border-radius: 16px;
+}
+.category-content h2{
+    text-align: center;
+    margin: 20px 0;
+}
+.award-information{
+    position: relative;
+    height: 75vh;
+}
+.award-content{
+    position: absolute;
+    margin-top: 30px;
+    height: 450px;
+    width:380px;
+    background-color:#8c8c8c30;
+}
+.award-photo{
+    padding: 16px;
+    text-align: center;
+}
+.award-photo img{
+   width:350px;
+   height: 250px;
+   object-fit: cover;
+   border-radius: 16px;
+}
+.award-info{
+    padding: 10px;
+}
+button{
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    background-color:#404040;
+    color: wheat;
+    border: none;
+    border-radius: 16px;
+}
+.one{
+    position: absolute;
+    left: 0;
+}
+.two{
+    position: absolute;
+    left:34%;
+}
+.three{
+    position: absolute;
+    left: 68%;
+}
+.spons-gallery h1{
+    text-align: center;
+}
+.spons-gallery img{
+    margin-top: 50px;
+    width: 200px;
+    height: 130px;
+    margin-right: 35px;
+}
+/* .onlinegallery{
+    margin: 20px 50px;
+}
+.onlinegallery h1{
+    margin-left: 20px;
+}
+#artwork-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 10px;
+} 
+.artwork-component {
+    box-shadow: 5px 5px 5px 5px#ccc;
+    padding: 15px;
+    margin: 15px;
+    text-align: center;
+    height: 400px;
+    width: 350px;
+}
+.artwork-component img {
+    height: 300px;
+    width: 300px;
+} */

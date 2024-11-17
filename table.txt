@@ -1,0 +1,9 @@
+CREATE TABLE painting(
+    sn INT PRIMARY KEY AUTO_INCREMENT,
+    paintingname VARCHAR(255),
+    artistname VARCHAR(255),
+    price INT,
+    category VARCHAR(255),
+    description VARCHAR(255),
+    paintingimg VARCHAR(255)
+);
