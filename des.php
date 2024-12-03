@@ -1,15 +1,47 @@
 <?php
-    session_start();
+session_start();
+
+// Database connection
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'web';
+
+$conn = new mysqli($host, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+if (isset($_GET['id'])) {
+    $painting_id = $_GET['id'];
+
+    $sql = "SELECT * FROM painting WHERE sn = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $painting_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $painting = $result->fetch_assoc();
+    } else {
+        die("Painting not found.");
+    }
+} else {
+    header('Location: onlinegallery.php');
+    exit();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="CSS/navstyle.css">
     <link rel="stylesheet" href="CSS/des.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -23,63 +55,70 @@
 
     <div class="nav">
         <div class="logo">
-            <img src="images/artgallery-removebg-preview.png" alt="no img">
+            <img src="images/artgallery-removebg-preview.png" alt="Art Gallery Logo">
         </div>
-
         <div class="aclass">
             <a href="home.php"><b>Home</b></a>
-            <a href="onlinegallery.php"><b>Online Gallery</b></a>
+            <a href="onlinegallery.php"><b>Online Exhibition</b></a>
             <a href="#section1"><b>About Us</b></a>
             <a href="#"><b>Your Favourites</b></a>
-            <a href="#"><b>Logout</b></a>
+            <a href="php/logout.php"><b>Logout</b></a>
         </div>
     </div>
 
     <div class="main-container">
 
         <div class="paintingpic">
-            <img src="images/draft2.jpg" alt="">
+            
+            <img src="<?php echo htmlspecialchars($painting['paintingimg']); ?>" alt="Painting Image">
         </div>
 
         <div class="descrption">
-
             <div class="headings">
-                <div class="name"><h1>HOPE</h1></div>
-                <div class="arname"><h2>Inshan Pariyar</h2></div>
-                <div class="cost"><h2>$220</h2></div>
+                <div class="name"><h1><?php echo htmlspecialchars($painting['paintingname']); ?></h1></div>
+                <div class="arname"><h2><?php echo htmlspecialchars($painting['artistname']); ?></h2></div>
+                <div class="cost"><h2>$<?php echo htmlspecialchars($painting['price']); ?></h2></div>
             </div>
             
             <div class="pdescription">
                 <h4>Description: </h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur officiis ut fugit necessitatibus? Quia, perferendis hic, exercitationem a at laudantium tempora aperiam placeat iusto, asperiores excepturi cupiditate inventore saepe ipsa?</p>
+                <p><?php echo nl2br(htmlspecialchars($painting['description'])); ?></p>
             </div>
 
             <div class="buttons">
-                <div class="view">
-                    <button>View about artist</button>
-                </div>
                 <div class="cart">
-                <button>Add to cart <i class="fa-solid fa-cart-shopping"></i></button>
+                    <button onclick="mycart()">Add to cart <i class="fa-solid fa-cart-shopping"></i></button>
                 </div>
                 <div class="fav">
-                    <i class="fa-regular fa-heart"></i>
+                    <button onclick="myfavourite()"><i class="fa-regular fa-heart"></i></button>
                 </div>
             </div>
-            
         </div>
     </div>
 
     <footer>
-        <p><img src="images/artgallery-removebg-preview.png" alt="no img">
+        <p><img src="images/artgallery-removebg-preview.png" alt="Art Gallery Logo">
             <h2>Nepal Art Gallery</h2>
         </p> <br>
-        <a href="home.html">Home</a>
-            <a href="onlinegallery.php">Online Gallery</a>
-            <a href="#">About Us</a>
-            <a href="#">Your Favourites</a>
-            <a href="#">Logout</a> <br>
-            <hr> <br>
+        <a href="home.php">Home</a>
+        <a href="onlinegallery.php">Online Exhibition</a>
+        <a href="#section1">About Us</a>
+        <a href="#">Your Favourites</a>
+        <a href="php/logout.php">Logout</a> <br>
+        <hr> <br>
         <p> @copyright2024</p> <br>
     </footer>
+
+    <script>
+        function myfavourite() {
+            var heartIcon = document.querySelector('.fav i');  
+            heartIcon.classList.toggle('fa-regular');  
+            heartIcon.classList.toggle('fa-solid');   
+        }
+        function mycart(){
+            alert("Contact physical gallery for payment and other details!")
+        }
+    </script>
+
 </body>
 </html>

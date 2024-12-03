@@ -65,14 +65,13 @@ button{
     font-style: normal;
     font-weight: 200;
 }
-.view{
-    margin-right: 30px;
-}
 .cart{
     margin-right: 30px;
 }
+.fav button{
+    background: white;
+}
 .fav i{
-    margin-top: 8px;
     color: red;
     font-size: 24px;
     align-items: center;

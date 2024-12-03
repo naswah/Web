@@ -4,14 +4,13 @@ $username = 'root';
 $password = '';
 $database = 'web';
 
-$conn = new mysqli("localhost", "root", "", "web");
+$conn = new mysqli($host, $username, $password, $database);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 $sql = "SELECT * FROM painting";
-
 $all_painting = $conn->query($sql);
 
 if (!$all_painting) {
@@ -26,9 +25,6 @@ if (!$all_painting) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/navstyle.css">
     <link rel="stylesheet" href="CSS/ogallerystyle.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <title>Nepal Art Gallery</title>
     <link rel="icon" href="images/artgallery-removebg-preview.png">
@@ -41,22 +37,24 @@ if (!$all_painting) {
 
         <div class="aclass">
             <a href="home.php"><b>Home</b></a>
-            <a href="onlinegallery.php"><b>Online Gallery</b></a>
+            <a href="onlinegallery.php"><b>Online Exhibition</b></a>
             <a href="home.php"><b>About Us</b></a>
             <a href="#"><b>Your Favourites</b></a>
-            <a href="#"><b>Logout</b></a>
+            <a href="php/index.html"><b>Logout</b></a>
         </div>
     </div>
 
-    <h1>Online Gallery</h1>
+    <h1>Online Exhibition</h1>
     <h3>You can now add your favourite painting!</h3>
+    <h3>To add your favourite painting, open the painting and mark it your favourite!</h3>
     
     <main>
         <?php
         while ($row = $all_painting->fetch_assoc()) { ?>
         <div class="artcontainer">
-            <div class="image">
-                <img src="<?php echo htmlspecialchars($row["paintingimg"]); ?>" alt="Art Image">
+            <div class="image" onclick="location.href='des.php?id=<?php echo htmlspecialchars($row['sn']); ?>';">                    
+                    <img src="<?php echo htmlspecialchars($row["paintingimg"]); ?>" alt="Art Image">
+
             </div>
             <div class="caption">
                 <p class="artname"><b><?php echo htmlspecialchars($row["paintingname"]); ?></b></p>
@@ -71,11 +69,11 @@ if (!$all_painting) {
         <p><img src="images/artgallery-removebg-preview.png" alt="Art Gallery Logo">
             <h2>Nepal Art Gallery</h2>
         </p>
-        <a href="home.html">Home</a>
-        <a href="onlinegallery.html">Online Gallery</a>
+        <a href="home.php">Home</a>
+        <a href="onlinegallery.php">Online Exhibition</a>
         <a href="#section1">About Us</a>
         <a href="#">Your Favourites</a>
-        <a href="#">Logout</a>
+        <a href="php/logout.php">Logout</a>
         <br>
         <hr>
         <p>@copyright2024</p>
