@@ -171,27 +171,3 @@ button{
     height: 130px;
     margin-right: 35px;
 }
-/* .onlinegallery{
-    margin: 20px 50px;
-}
-.onlinegallery h1{
-    margin-left: 20px;
-}
-#artwork-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 10px;
-} 
-.artwork-component {
-    box-shadow: 5px 5px 5px 5px#ccc;
-    padding: 15px;
-    margin: 15px;
-    text-align: center;
-    height: 400px;
-    width: 350px;
-}
-.artwork-component img {
-    height: 300px;
-    width: 300px;
-} */

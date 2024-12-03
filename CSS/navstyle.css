@@ -3,6 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+h2{
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500; 
+}
+p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    text-align: justify;
+}
+a{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    text-align: justify;
+}
 .nav{
     display: flex;
     justify-content: right; 
@@ -38,7 +53,10 @@ footer{
     color: white;
     background-color: #404040;
 }
-footer p, h2{
+footer h2{
+    text-align: center;
+}
+footer p{
     text-align: center;
 }
 footer img{

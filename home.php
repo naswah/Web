@@ -25,12 +25,11 @@
 
         <div class="aclass">
             <a href="home.php"><b>Home</b></a>
-            <a href="html/onlinegallery.html"><b>Online Gallery</b></a>
-            <a href="#"><b>About Us</b></a>
-            <a href="#"><b>Ongoing Exhibition</b></a>
-            <a href="#"><b>Profile</b></a>
+            <a href="onlinegallery.php"><b>Online Gallery</b></a>
+            <a href="#section1"><b>About Us</b></a>
+            <a href="#"><b>Your Favourites</b></a>
+            <a href="#"><b>Logout</b></a>
         </div>
-
     </div>
 
     <main>
@@ -56,13 +55,13 @@
 
     </main>
     
-    <div class="about">
+    <div class="about" id="section1">
         <div class="about-photo">
             <img src="images/about.jpg" alt="no img">
         </div>
 
         <div class="info">
-            <h1>About Nepal Art Gallery</h1>
+            <h1 >About Nepal Art Gallery</h1>
             <p>
                 This platform is designed to create seamless connections between artists and art enthusiasts, providing a digital space for showcasing, viewing, and purchasing artwork. Whether you're an artist uploading your latest masterpiece or a viewer exploring new collections, the platform offers: <br>
 
@@ -74,25 +73,35 @@
         </div>
     </div>
 
+
     <div class="content">
     <div class="category">
         <h1>Category</h1>
         <div class="images">
 
         <div class="category-content">
-            <img src="images/abstract art.jpg" alt="">
+        <a href="abstract.php">
+        <img src="images/abstract art.jpg" alt="">
+        </a>
+            
             <h2>Abstract</h2>
         </div>
         <div class="category-content">
+        <a href="contempopary.php">
             <img src="images/contemporary art.jpg" alt="">
+        </a>
             <h2>Contemporary</h2>
         </div>
         <div class="category-content">
+        <a href="spiritual.php">
             <img src="images/spiritual art.jpg" alt="">
+        </a>
             <h2>Spiritual</h2>
         </div>
         <div class="category-content">
-            <img src="images/expressionalism.jpg" alt="">
+            <a href="expressionalism.php">
+                <img src="images/expressionalism.jpg" alt="">
+            </a>
             <h2>Expressionalism</h2>
         </div>
     </div>
@@ -111,8 +120,6 @@
                     <h2>Reeta Manandhar</h2>
                     <h2>2018</h2>
                 </div>
-
-                <button style="margin-left: 10px;">Learn More</button>
             </div>
 
             <div class="award-content two">
@@ -125,7 +132,6 @@
                     <h2>2024</h2>
                 </div>
 
-                <button style="margin-left: 10px;">Learn More</button>
             </div>
 
             <div class="award-content three">
@@ -138,7 +144,6 @@
                     <h2>2024</h2>
                 </div>
 
-                <button style="margin-left: 10px;">Learn More</button>
             </div> 
         </div>
     </div>
@@ -157,10 +162,10 @@
             <h2>Nepal Art Gallery</h2>
         </p> <br>
         <a href="home.html">Home</a>
-            <a href="onlinegallery.html">Online Gallery</a>
-            <a href="#">About Us</a>
-            <a href="#">Ongoing Exhibition</a>
-            <a href="#">Profile</a> <br>
+            <a href="onlinegallery.php">Online Gallery</a>
+            <a href="#section1">About Us</a>
+            <a href="#">Your Favourites</a>
+            <a href="#">Logout</a> <br>
             <hr> <br>
         <p> @copyright2024</p> <br>
     </footer>
