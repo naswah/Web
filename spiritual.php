@@ -50,6 +50,7 @@ if (!$all_painting) {
 
     <h1>Spiritual Art</h1>
 
+    <div class="main-container">
     <main>
         <?php
         while ($row = $all_painting->fetch_assoc()) { ?>
@@ -65,6 +66,7 @@ if (!$all_painting) {
         </div>
         <?php } ?>
     </main>
+    </div>
 
     <footer>
         <p><img src="images/artgallery-removebg-preview.png" alt="no img">

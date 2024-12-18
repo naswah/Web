@@ -25,9 +25,33 @@ if (!$all_painting) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/navstyle.css">
     <link rel="stylesheet" href="CSS/ogallerystyle.css">
+    <link rel="stylesheet" href="CSS/search.css">
     
     <title>Nepal Art Gallery</title>
     <link rel="icon" href="images/artgallery-removebg-preview.png">
+
+    <style>
+        .search-bar input{
+            margin-top:20px;
+            margin-left:700px;
+            margin-right: 65px;
+            width: 300px;
+            padding: 10px;
+            border-radius:20px;
+            border:1px solid gray;
+        }
+        .search-bar button{
+            width: 100px;
+            height: 30px;
+            padding: 5px;
+            background-color:#404040;
+            color: wheat;
+            border: none;
+            border-radius: 16px;
+            margin-top:20px;
+        }
+    </style>
+
 </head>
 <body>
     <div class="nav">
@@ -44,26 +68,36 @@ if (!$all_painting) {
         </div>
     </div>
 
+    <div class="search-bar">
+        <form action="search.php" method="get">
+            <input type="text" name="query" placeholder="Search paintings by name or artist.." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
     <h1>Online Exhibition</h1>
     <h3>You can now add your favourite painting!</h3>
     <h3>To add your favourite painting, open the painting and mark it your favourite!</h3>
     
+    <div class="main-container">
     <main>
         <?php
         while ($row = $all_painting->fetch_assoc()) { ?>
         <div class="artcontainer">
             <div class="image" onclick="location.href='des.php?id=<?php echo htmlspecialchars($row['sn']); ?>';">                    
                     <img src="<?php echo htmlspecialchars($row["paintingimg"]); ?>" alt="Art Image">
-
             </div>
+
             <div class="caption">
                 <p class="artname"><b><?php echo htmlspecialchars($row["paintingname"]); ?></b></p>
                 <p class="artist"><?php echo htmlspecialchars($row["artistname"]); ?></p>
                 <p class="price">$<?php echo htmlspecialchars($row["price"]); ?></p>
             </div>
+
         </div>
         <?php } ?>
     </main>
+    </div>
 
     <footer>
         <p><img src="images/artgallery-removebg-preview.png" alt="Art Gallery Logo">

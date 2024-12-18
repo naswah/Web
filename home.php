@@ -15,6 +15,27 @@
     
     <title>Nepal Art Gallery</title>
     <link rel="icon" href="images/artgallery-removebg-preview.png">
+    <style>
+        .search-bar input{
+            margin-top:20px;
+            margin-left:700px;
+            margin-right: 65px;
+            width: 300px;
+            padding: 10px;
+            border-radius:20px;
+            border:1px solid gray;
+        }
+        .search-bar button{
+            width: 100px;
+            height: 30px;
+            padding: 5px;
+            background-color:#404040;
+            color: wheat;
+            border: none;
+            border-radius: 16px;
+            margin-top:20px;
+        }
+    </style>
 </head>
 <body>
 
@@ -31,6 +52,14 @@
             <a href="php/logout.php"><b>Logout</b></a>
         </div>
     </div>
+
+    <div class="search-bar">
+        <form action="search.php" method="get">
+            <input type="text" name="query" placeholder="Search paintings by name or artist.." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
 
     <main>
         <div class="myslides fade">

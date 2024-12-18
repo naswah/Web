@@ -7,3 +7,21 @@ CREATE TABLE painting(
     description VARCHAR(255),
     paintingimg VARCHAR(255)
 );
+
+
+
+CREATE TABLE favourites (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    userid INT,
+    paintingid INT,
+    FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (paintingid) REFERENCES painting(sn) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+Create table users(
+id int primary key auto_increment,
+username varchar(50),
+email varchar(50),
+phone int,
+password varchar(50)
+);

@@ -3,27 +3,28 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 h1 {
     font-family: "Poppins", sans-serif;
     font-style: normal;
     font-weight: 700;
     margin-top: 30px;
-    margin-left: 30px;
+    margin-left: 70px;
 }
 
 h2 {
     font-family: "Poppins", sans-serif;
     font-style: normal;
     font-weight: 500;
+    margin-left: 70px;
+    color: gray;
 }
 h3{
     font-family: "Poppins", sans-serif;
     font-style: normal;
-    font-weight: 500;
-    margin-left: 30px; 
+    font-weight: 500; 
+    margin-left: 70px;
+    color: gray;
 }
-
 a {
     font-family: "Poppins", serif;
     font-weight: 100;
@@ -35,31 +36,36 @@ p {
     font-weight: 400;
     text-align: justify;
 }
+.main-container{
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
 main {
     display: grid;
-    grid-template-columns: repeat(3, 420px); 
-    gap: 20px;
+    grid-template-columns: repeat(3, 400px); 
+    gap: 18px;
     padding: 20px;
 }
-
 .artcontainer {
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: 10px;
-    height: 400px;
+    height: 370px;
+    width: 370px;
     border: 1px solid lightgray;
     box-shadow: 5px 5px 5px 5px #ccc;
     padding: 20px;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all 0.3s;
+    margin-bottom: 50px;
 }
-
 .artcontainer .image {
     height: 70%;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
-
 .artcontainer .image img {
     height: 100%;
     width: 100%;
