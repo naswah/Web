@@ -48,7 +48,7 @@
             <a href="home.php"><b>Home</b></a>
             <a href="onlinegallery.php"><b>Online Exhibition</b></a>
             <a href="#section1"><b>About Us</b></a>
-            <a href="#"><b>Your Favourites</b></a>
+            <a href="shoppingcart.php"><b>Cart</b></a>
             <a href="php/logout.php"><b>Logout</b></a>
         </div>
     </div>
@@ -96,8 +96,8 @@
 
                 - Easy login for artists and viewers. <br>
                 - Buy Paintings. <br>
-                - Artists can upload their artwork. <br>
                 - Ratings and reviews to enhance the art-viewing experience. <br>
+                - Search painting by name or artist. <br>
             </p>
         </div>
     </div>
@@ -189,10 +189,10 @@
         <p><img src="images/artgallery-removebg-preview.png" alt="no img">
             <h2>Nepal Art Gallery</h2>
         </p> <br>
-        <a href="home.html">Home</a>
+            <a href="home.php">Home</a>
             <a href="onlinegallery.php">Online Exhibition</a>
-            <a href="#section1">About Us</a>
-            <a href="#">Your Favourites</a>
+            <a href="#">About Us</a>
+            <a href="shoppingcart.php">Cart</a>
             <a href="php/logout.php">Logout</a> <br>
             <hr> <br>
         <p> @copyright2024</p> <br>
@@ -200,5 +200,3 @@
     <script src="JS/home.js"></script>
 </body>
 </html>
-
-<!-- mandish -->

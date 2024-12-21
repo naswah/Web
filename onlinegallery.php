@@ -30,6 +30,10 @@ if (!$all_painting) {
     <title>Nepal Art Gallery</title>
     <link rel="icon" href="images/artgallery-removebg-preview.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
     <style>
         .search-bar input{
             margin-top:20px;
@@ -62,10 +66,11 @@ if (!$all_painting) {
         <div class="aclass">
             <a href="home.php"><b>Home</b></a>
             <a href="onlinegallery.php"><b>Online Exhibition</b></a>
-            <a href="home.php"><b>About Us</b></a>
-            <a href="#"><b>Your Favourites</b></a>
-            <a href="php/index.html"><b>Logout</b></a>
+            <a href="#section1"><b>About Us</b></a>
+            <a href="shoppingcart.php"><b>Cart</b></a>
+            <a href="php/logout.php"><b>Logout</b></a>
         </div>
+        
     </div>
 
     <div class="search-bar">
@@ -103,12 +108,11 @@ if (!$all_painting) {
         <p><img src="images/artgallery-removebg-preview.png" alt="Art Gallery Logo">
             <h2>Nepal Art Gallery</h2>
         </p>
-        <a href="home.php">Home</a>
-        <a href="onlinegallery.php">Online Exhibition</a>
-        <a href="#section1">About Us</a>
-        <a href="#">Your Favourites</a>
-        <a href="php/logout.php">Logout</a>
-        <br>
+            <a href="home.php">Home</a>
+            <a href="onlinegallery.php">Online Exhibition</a>
+            <a href="#">About Us</a>
+            <a href="shoppingcart.php">Cart</a>
+            <a href="php/logout.php">Logout</a> <br>
         <hr>
         <p>@copyright2024</p>
     </footer>

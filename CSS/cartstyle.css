@@ -1,0 +1,73 @@
+h2{
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500; 
+}
+h3{
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 200; 
+}
+.main-container {
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 400px); 
+    gap: 18px;
+    padding: 20px;
+}
+
+.artcontainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 470px;
+    width: 370px;
+    border: 1px solid lightgray;
+    box-shadow: 5px 5px 5px 5px #ccc;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 0px;
+}
+.artcontainer .image {
+    height: 70%;
+    margin-bottom: 18px;
+}
+.artcontainer .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.artcontainer .caption {
+    padding-left: 1em;
+    text-align: left;
+    line-height: 1.5em;
+    height: 25%;
+}
+.artcontainer .caption h2,
+.artcontainer .caption h3,
+.artcontainer .caption h4 {
+    margin: 0;
+}
+
+button {
+    background-color: #404040;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #40404090;
+}

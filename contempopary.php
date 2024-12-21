@@ -41,9 +41,9 @@ if (!$all_painting) {
 
         <div class="aclass">
             <a href="home.php"><b>Home</b></a>
-            <a href="html/onlinegallery.html"><b>Online Exhibition</b></a>
-            <a href="#"><b>About Us</b></a>
-            <a href="#"><b>Your Favourites</b></a>
+            <a href="onlinegallery.php"><b>Online Exhibition</b></a>
+            <a href="#section1"><b>About Us</b></a>
+            <a href="shoppingcart.php"><b>Cart</b></a>
             <a href="php/logout.php"><b>Logout</b></a>
         </div>
     </div>
@@ -52,17 +52,19 @@ if (!$all_painting) {
 
     <div class="main-container">
     <main>
-        <?php
+    <?php
         while ($row = $all_painting->fetch_assoc()) { ?>
         <div class="artcontainer">
-            <div class="image">
-                <img src="<?php echo htmlspecialchars($row["paintingimg"]); ?>" alt="Art Image">
+            <div class="image" onclick="location.href='des.php?id=<?php echo htmlspecialchars($row['sn']); ?>';">                    
+                    <img src="<?php echo htmlspecialchars($row["paintingimg"]); ?>" alt="Art Image">
             </div>
+
             <div class="caption">
                 <p class="artname"><b><?php echo htmlspecialchars($row["paintingname"]); ?></b></p>
                 <p class="artist"><?php echo htmlspecialchars($row["artistname"]); ?></p>
                 <p class="price">$<?php echo htmlspecialchars($row["price"]); ?></p>
             </div>
+
         </div>
         <?php } ?>
     </main>
@@ -72,10 +74,10 @@ if (!$all_painting) {
         <p><img src="images/artgallery-removebg-preview.png" alt="no img">
             <h2>Nepal Art Gallery</h2>
         </p> <br>
-        <a href="home.html">Home</a>
+            <a href="home.php">Home</a>
             <a href="onlinegallery.php">Online Exhibition</a>
             <a href="#">About Us</a>
-            <a href="#">Your Favourites</a>
+            <a href="shoppingcart.php">Cart</a>
             <a href="php/logout.php">Logout</a> <br>
             <hr> <br>
         <p> @copyright2024</p> <br>

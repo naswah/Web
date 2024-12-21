@@ -25,7 +25,7 @@ $query = isset($_GET['query']) ? trim($_GET['query']) : '';
     <?php
     if ($query !== '') {
         // Search for paintings by name or artist
-        $sql = "SELECT * FROM painting WHERE paintingname LIKE ? OR artistname LIKE ?";
+        $sql = "SELECT * FROM painting WHERE paintingname like ? OR artistname like ?";
         $stmt = $conn->prepare($sql);
         $searchTerm = "%" . $query . "%";
         $stmt->bind_param("ss", $searchTerm, $searchTerm);
@@ -46,13 +46,12 @@ $query = isset($_GET['query']) ? trim($_GET['query']) : '';
             }
             echo "</div>";
         } else {
-            echo "<p>No results found for your search.</p>";
+                 echo "<p style = 'margin-left: 65px;'>No results found for your search.</p>";
         }
         $stmt->close();
     } else {
         echo "<p>Please enter a search term.</p>";
     }
-
     $conn->close();
     ?>
 </body>

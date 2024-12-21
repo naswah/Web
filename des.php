@@ -13,7 +13,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 if (isset($_GET['id'])) {
     $painting_id = $_GET['id'];
 
@@ -25,12 +24,44 @@ if (isset($_GET['id'])) {
 
     if ($result->num_rows > 0) {
         $painting = $result->fetch_assoc();
+
+        // Check if the painting is already in the cart for the logged-in user
+        if (isset($_SESSION['id'])) {
+            $user_id = $_SESSION['id'];
+            $cart_sql = "SELECT * FROM cart WHERE userid = ? AND paintingid = ?";
+            $cart_stmt = $conn->prepare($cart_sql);
+            $cart_stmt->bind_param('ii', $user_id, $painting_id);
+            $cart_stmt->execute();
+            $cart_result = $cart_stmt->get_result();
+
+            $is_in_cart = $cart_result->num_rows > 0;
+        } else {
+            $is_in_cart = false;
+        }
     } else {
         die("Painting not found.");
     }
 } else {
     header('Location: onlinegallery.php');
     exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
+    if (isset($_SESSION['id'])) {
+        $user_id = $_SESSION['id'];
+        $insert_cart_sql = "INSERT INTO cart (userid, paintingid) VALUES (?, ?) ON DUPLICATE KEY UPDATE paintingid = paintingid";
+        $insert_cart_stmt = $conn->prepare($insert_cart_sql);
+        $insert_cart_stmt->bind_param('ii', $user_id, $painting_id);
+
+        if ($insert_cart_stmt->execute()) {
+            $is_in_cart = true;
+        } else {
+            die("Error adding to cart: " . $conn->error);
+        }
+    } else {
+        header('Location: index.php');
+        exit();
+    }
 }
 ?>
 
@@ -44,7 +75,7 @@ if (isset($_GET['id'])) {
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
@@ -61,7 +92,7 @@ if (isset($_GET['id'])) {
             <a href="home.php"><b>Home</b></a>
             <a href="onlinegallery.php"><b>Online Exhibition</b></a>
             <a href="#section1"><b>About Us</b></a>
-            <a href="#"><b>Your Favourites</b></a>
+            <a href="shoppingcart.php"><b>Cart</b></a>
             <a href="php/logout.php"><b>Logout</b></a>
         </div>
     </div>
@@ -69,7 +100,6 @@ if (isset($_GET['id'])) {
     <div class="main-container">
 
         <div class="paintingpic">
-            
             <img src="<?php echo htmlspecialchars($painting['paintingimg']); ?>" alt="Painting Image">
         </div>
 
@@ -86,12 +116,13 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="buttons">
-                <div class="cart">
-                    <button onclick="mycart()">Add to cart <i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-                <div class="fav">
-                    <button onclick="myfavourite()"><i class="fa-regular fa-heart"></i></button>
-                </div>
+                <?php if ($is_in_cart): ?>
+                    <button disabled>Booked</button>
+                <?php else: ?>
+                    <form method="post">
+                        <button type="submit" name="add_to_cart">Add to cart <i class="fa-solid fa-cart-shopping"></i></button>
+                    </form>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -102,23 +133,12 @@ if (isset($_GET['id'])) {
         </p> <br>
         <a href="home.php">Home</a>
         <a href="onlinegallery.php">Online Exhibition</a>
-        <a href="#section1">About Us</a>
-        <a href="#">Your Favourites</a>
+        <a href="#">About Us</a>
+        <a href="shoppingcart">Cart</a>
         <a href="php/logout.php">Logout</a> <br>
         <hr> <br>
         <p> @copyright2024</p> <br>
     </footer>
-
-    <script>
-        function myfavourite() {
-            var heartIcon = document.querySelector('.fav i');  
-            heartIcon.classList.toggle('fa-regular');  
-            heartIcon.classList.toggle('fa-solid');   
-        }
-        function mycart(){
-            alert("Contact physical gallery for payment and other details!")
-        }
-    </script>
 
 </body>
 </html>
