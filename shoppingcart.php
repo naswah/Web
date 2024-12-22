@@ -60,7 +60,14 @@ if ($result->num_rows > 0) {
             <a href="onlinegallery.php"><b>Online Exhibition</b></a>
             <a href="#section1"><b>About Us</b></a>
             <a href="shoppingcart.php"><b>Cart</b></a>
-            <a href="php/logout.php"><b>Logout</b></a>
+            <?php 
+                if (!isset($_SESSION['id'])) {
+                    echo "<a href='index.php'><b>Login</b></a>";
+                }
+                else{
+                    echo "<a href='php/logout.php'><b>Logout</b></a>";
+            }?>
+            
         </div>
     </div>
     <div class="main-container">
